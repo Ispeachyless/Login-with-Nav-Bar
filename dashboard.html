@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Inventory Management System </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- javascript -->
+    <!-- SHOULD BE BUNDLED!! -->
+    <script type="text/javascript" src="assets\javascript\sidebar.js" defer></script>
+    <script type="text/javascript" src="assets\javascript\loader.js" defer></script>
+
+    <!-- fonts and icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eaeb685f54.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="loader-container" >
+        <div class="loader"></div>
+    </div>
+    <div id="nav-container" class="hidden">
+        <nav id="sidebar">
+            <ul>
+                <li>
+                    <span class="logo">Luminaire</span>
+                    <button onclick=toggleSidebar() id="toggle-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path
+                                d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fa fa-bars" aria-hidden="true" height="24px" width="24px" viewBox="0 -960 960 960"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users" aria-hidden="true" height="24px" width="24px" viewBox="0 -960 960 960"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <div class="separator"></div>
+                <li>
+                    <button onclick=toggleSubMenu(this) class="dropdown-btn">
+                        <i class="fa fa-archive"></i>
+                        <span>Inventory</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path
+                                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+                        </svg>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="#"><i class="fa fa-minus"></i>Items</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Inventory Adjustment</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button onclick=toggleSubMenu(this) class="dropdown-btn">
+                        <i class="fa fa-archive"></i>
+                        <span>Sales</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path
+                                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+                        </svg>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="#"><i class="fa fa-minus"></i>Vendors</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Sales Purchase</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Sales Order</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Sales Return</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Invoice Generation</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <button onclick=toggleSubMenu(this) class="dropdown-btn">
+                        <i class="fa fa-archive"></i>
+                        <span>Reports</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path
+                                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+                        </svg>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="#"><i class="fa fa-minus"></i>Audit Log</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Low Stock Items</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Most Sold Items</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Payments Recieved</a></li>
+                            <li><a href="#"><i class="fa fa-minus"></i>Inventory Summary</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <div class="separator"></div>
+                    <a href="index.html">
+                        <i class="fa fa-sign-out" aria-hidden="true" height="24px" width="24px"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div id="main-container" class="hidden">
+        <main>
+            <div class="content">
+                <h2>Dashboard</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro iure quaerat aliquam! Optio dolorum
+                    in eum provident, facilis error repellendus excepturi enim dolor deleniti adipisci consectetur doloremque,
+                    unde maiores odit sapiente. Atque ab necessitatibus laboriosam consequatur eius similique, ex dolorum eum
+                    eaque sequi id veritatis voluptates perspiciatis, cupiditate pariatur.</p>
+            </div>
+            <div class="separator"></div>
+            <div class="content">
+                <h2>Example Heading</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic aliquid corrupti, tenetur fuga magnam
+                    necessitatibus blanditiis quod sint excepturi laborum esse alias labore molestias adipisci, nostrum corporis
+                    ex maiores quis dolore quidem asperiores odio ad fugit eos! Delectus modi quas ipsa deleniti consequuntur
+                    nihil, hic in ipsum exercitationem blanditiis natus, ex, expedita eos. Excepturi quidem harum hic nam magnam
+                    deserunt illum quis dolorum eos ipsum ut natus sapiente sit, officia obcaecati assumenda tempore molestias?
+                    In fugiat iure laboriosam quasi, eum suscipit, harum autem saepe ut, soluta aspernatur ducimus eos magnam
+                    quidem officiis. Laboriosam nemo explicabo delectus, et quos vero cum?</p>
+            </div>
+            <div class="tab1cards">
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cap</span>
+                    <span class="price">$100</span>
+                </div>
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cool Chair</span>
+                    <span class="price">$100</span>
+                </div>
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cool Chair</span>
+                    <span class="price">$100</span>
+                </div>
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cool Chair</span>
+                    <span class="price">$100</span>
+                </div>
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cool Chair</span>
+                    <span class="price">$100</span>
+                </div>
+                <div class="card">
+                    <div class="image"><img class=card1 src="assets\images\cap-front-and-back.png" alt="cool cap"></div>
+                    <span class="title">Cool Chair</span>
+                    <span class="price">$100</span>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
